@@ -172,7 +172,7 @@ __inc_nonce function increments the nonce for a specific account, ensuring that 
 
 ## Installation
 ```
-git clone https://github.com/user/project.git
+git clone https://github.com/sks006/HashChain.git
 cd project
 npm install
 ```
