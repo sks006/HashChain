@@ -1,7 +1,10 @@
 # This is a personal Blockchain project
 ## Features
 ### Primary language 
-__Rust__ [![Rust logo](https://th.bing.com/th/id/OIP.pnTN1j0W6CEtmtji83uENQHaE8?rs=1&pid=ImgDetMain/50)]
+__Rust__ <a href="https://doc.rust-lang.org/std/primitive.str.html">
+  <img src="https://th.bing.com/th/id/OIP.pnTN1j0W6CEtmtji83uENQHaE8?rs=1&pid=ImgDetMain/50" alt="Rust logo" width="50" />
+</a>
+
 
 ## Scalability Features
 ### Block Structure (support.rs)
@@ -55,7 +58,8 @@ __Blockchain technology ensures that once data is written, it cannot be altered_
 pub struct Block<Header, Extrinsic> {
     pub header: Header,
     pub extrinsics: Vec<Extrinsic>,
-}```
+}
+```
 
 
 __Each block's header contains essential information (like block_number), and the block itself holds multiple transactions (extrinsics)__
@@ -66,7 +70,6 @@ __Each block's header contains essential information (like block_number), and th
 pub struct Pallet<T: Config> {
     claims: BTreeMap<T::Content, T::AccountId>,
 }
-
 ```
 __Storing claims in a BTreeMap and linking them to account IDs, you ensure that each claim is uniquely associated with its creator__
 
@@ -78,7 +81,8 @@ __Storing claims in a BTreeMap and linking them to account IDs, you ensure that 
 pub struct SystemPallet<T: Config> {
     pub block_number: T::BlockNumber,
     pub nonce: BTreeMap<T::AccountId, T::Nonce>,
-}```
+}
+```
 
 
 __System module tracks the block number and manages nonces for each account, ensuring that each transaction is unique and ordered, which helps prevent double-spending and maintains data integrity__
@@ -108,20 +112,21 @@ pub type AccountId = String;
 
 
 ### Balances Module (balances.rs):
-
+```
 #[derive(Debug)]
 pub struct Pallet<T: Config> {
     balances: BTreeMap<T::AccountId, T::Balance>,
 }
 
-`
+```
 __The balances module stores account balances in a BTreeMap__
 
 
 ```
 pub fn set_balance(&mut self, who: &T::AccountId, amount: T::Balance) {
     self.balances.insert(who.clone(), amount);
-}~~
+}
+```
 
 
 __set_balance function allows updating the balance of a specific account.__
@@ -130,7 +135,8 @@ __set_balance function allows updating the balance of a specific account.__
 ```
 pub fn get_balance(&self, who: &T::AccountId) -> T::Balance {
     *self.balances.get(who).unwrap_or(&T::Balance::zero())
-}```
+}
+```
 
 
 __get_balance function retrieves the balance of a specific account, enabling the system to track account balances accurately__
