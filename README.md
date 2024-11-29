@@ -1,7 +1,7 @@
 # This is a personal Blockchain project
 ## Features
 ### Primary language 
-__Rust__ [![Rust logo](https://th.bing.com/th/id/OIP.pnTN1j0W6CEtmtji83uENQHaE8?rs=1&pid=ImgDetMain/150)]
+__Rust__ [![Rust logo](https://th.bing.com/th/id/OIP.pnTN1j0W6CEtmtji83uENQHaE8?rs=1&pid=ImgDetMain/50)]
 
 ## Scalability Features
 ### Block Structure (support.rs)
@@ -51,11 +51,11 @@ __Blockchain technology ensures that once data is written, it cannot be altered_
 
 ### Block Structure (support.rs):
 
-~~~bash
+```
 pub struct Block<Header, Extrinsic> {
     pub header: Header,
     pub extrinsics: Vec<Extrinsic>,
-}~~~
+}```
 
 
 __Each block's header contains essential information (like block_number), and the block itself holds multiple transactions (extrinsics)__
@@ -118,7 +118,7 @@ pub struct Pallet<T: Config> {
 __The balances module stores account balances in a BTreeMap__
 
 
-~~~bash
+```
 pub fn set_balance(&mut self, who: &T::AccountId, amount: T::Balance) {
     self.balances.insert(who.clone(), amount);
 }~~
@@ -158,11 +158,11 @@ __inc_nonce function increments the nonce for a specific account, ensuring that 
 
 
 ## Installation
-~~~bash
+```
 git clone https://github.com/user/project.git
 cd project
 npm install
-~~~
+```
 :rocket:
 :tada: 
 :bug:
