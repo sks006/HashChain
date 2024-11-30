@@ -115,9 +115,9 @@ __create_claim function checks if the claim already exists__
 
 
 ### Account ID Management (types.rs):
-
+```
 pub type AccountId = String;
-
+```
 
 ### Balances Module (balances.rs):
 
