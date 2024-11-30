@@ -1,14 +1,14 @@
 # This is a personal Blockchain project
 ## Features
 ### Primary language 
-__Rust__   <br><a href="https://doc.rust-lang.org/std/primitive.str.html">
+ __Rust__    <br><a href="https://doc.rust-lang.org/std/primitive.str.html">
   <img src="https://th.bing.com/th/id/OIP.pnTN1j0W6CEtmtji83uENQHaE8?rs=1&pid=ImgDetMain/50" alt="Rust logo" width="50" />
 </a>
 
 
 ## Scalability Features
 ### Block Structure (support.rs)
-__A Block structure that holds multiple extrinsics (transactions)__
+ A Block structure that holds multiple extrinsics (transactions) 
 
 ```
 pub struct Block<Header, Extrinsic> {
@@ -19,7 +19,7 @@ pub struct Block<Header, Extrinsic> {
 
 ### Efficient Data Management (BTreeMap)
 
-__BTreeMap for storing claims and balances ensures that My data structures are efficiently managed, providing quicker access and updates. O(log n) complexity for inserts, deletions, and lookups, which scales__
+ BTreeMap for storing claims and balances ensures that My data structures are efficiently managed, providing quicker access and updates. O(log n) complexity for inserts, deletions, and lookups, which scales 
 
 | Notation   | Complexity   |
 |------------|--------------|
@@ -47,7 +47,7 @@ pub struct Pallet<T: Config> {
 - mod support;
 - mod system;
 
-__Each module can be optimized and scaled independently.__
+ Each module can be optimized and scaled independently. 
 
 
 ## Ensuring Data Integrity and Immutability:
@@ -55,7 +55,7 @@ __Each module can be optimized and scaled independently.__
 
 ### Blockchain's Immutable Ledger:
 
-__Blockchain technology ensures that once data is written, it cannot be altered__
+ Blockchain technology ensures that once data is written, it cannot be altered 
 
 ### Block Structure (support.rs):
 
@@ -66,7 +66,7 @@ pub struct Block<Header, Extrinsic> {
 }
 ```
 
-__Each block's header contains essential information (like block_number), and the block itself holds multiple transactions (extrinsics)__
+ Each block's header contains essential information (like block_number), and the block itself holds multiple transactions (extrinsics) 
 
 
 
@@ -77,7 +77,7 @@ pub struct Pallet<T: Config> {
     claims: BTreeMap<T::Content, T::AccountId>,
 }
 ```
-__Storing claims in a BTreeMap and linking them to account IDs, you ensure that each claim is uniquely associated with its creator__
+ Storing claims in a BTreeMap and linking them to account IDs, you ensure that each claim is uniquely associated with its creator 
 
 
 
@@ -90,7 +90,7 @@ pub struct SystemPallet<T: Config> {
     pub nonce: BTreeMap<T::AccountId, T::Nonce>,
 }
 ```
-__System module tracks the block number and manages nonces for each account, ensuring that each transaction is unique and ordered, which helps prevent double-spending and maintains data integrity__
+ System module tracks the block number and manages nonces for each account, ensuring that each transaction is unique and ordered, which helps prevent double-spending and maintains data integrity 
 
 
 
@@ -107,7 +107,7 @@ pub fn create_claim(&mut self, caller: T::AccountId, claim: T::Content) -> Dispa
     }
 }
 ```
-__create_claim function checks if the claim already exists__
+ create_claim function checks if the claim already exists 
 
 
 
@@ -128,7 +128,7 @@ pub struct Pallet<T: Config> {
 }
 
 ```
-__The balances module stores account balances in a BTreeMap__
+ The balances module stores account balances in a BTreeMap 
 
 
 
@@ -137,7 +137,7 @@ pub fn set_balance(&mut self, who: &T::AccountId, amount: T::Balance) {
     self.balances.insert(who.clone(), amount);
 }
 ```
-__set_balance function allows updating the balance of a specific account.__
+ set_balance function allows updating the balance of a specific account. 
 
 
 
@@ -146,7 +146,7 @@ pub fn get_balance(&self, who: &T::AccountId) -> T::Balance {
     *self.balances.get(who).unwrap_or(&T::Balance::zero())
 }
 ```
-__get_balance function retrieves the balance of a specific account, enabling the system to track account balances accurately__
+ get_balance function retrieves the balance of a specific account, enabling the system to track account balances accurately 
 
 
 
@@ -157,7 +157,7 @@ pub struct SystemPallet<T: Config> {
     pub nonce: BTreeMap<T::AccountId, T::Nonce>,
 }
 ```
-__The nonce map in the SystemPallet keeps track of the number of transactions sent by each account__
+ The nonce map in the SystemPallet keeps track of the number of transactions sent by each account 
 
 
 
@@ -167,7 +167,7 @@ pub fn inc_nonce(&mut self, who: &T::AccountId) {
     self.nonce.insert(who.clone(), nonce + T::Nonce::one());
 }
 ```
-__inc_nonce function increments the nonce for a specific account, ensuring that each transaction is processed uniquely and sequentially__
+ inc_nonce function increments the nonce for a specific account, ensuring that each transaction is processed uniquely and sequentially 
 
 
 ## Installation
